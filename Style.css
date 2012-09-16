@@ -1,0 +1,131 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: #FFF1FD;
+}
+
+body ul {
+	list-style-type: none;
+}
+
+.wraper {
+	padding:5px;
+	width:901px; 
+	min-height:250px; 
+	margin:auto; 
+	position: relative;	
+}
+
+.header {
+	display: block; 
+	min-height: 80px;
+	margin-bottom: 5px;
+	border-bottom: #939090 solid 1px;
+}
+
+.navigation {
+	float: right; 
+	height:10px;
+}
+
+.navigation ul {
+	float:left;
+}
+
+.navigation ul li{
+	float:left; 
+	display:inline-block;
+	margin-right: 15px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.page {
+	min-height: 200px;
+	width: 100%;
+	padding: 25px 5px 25px 5px;
+	float: left;
+	background: #FBFBFB;
+	
+	-moz-box-shadow: 3px 3px 4px #403939;
+	-webkit-box-shadow: 3px 3px 4px #403939;
+	box-shadow: 3px 3px 4px #403939;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#403939')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#403939');
+
+}
+
+.sidebar {
+	float:left;
+	width:200px;
+	min-height:200px;
+	padding-top: 10px;
+}
+
+.sidebar ul {
+	padding-left: 20px;
+}
+
+.sidebar ul li {
+	width: 120px;
+	height: 40px;
+}
+
+.content {
+	float:right;
+	margin-top:5px; 
+	float: left;
+	width:600px; 
+	min-height: 100px;
+}
+
+.footer {
+	float:left;
+	margin-top: 10px;
+	border-top: #939090 solid 1px;
+	min-height: 60px;
+	width: 100%;
+	
+	color: #666666;
+    font-size: 12px;
+    line-height: 2.2em;
+    text-align: center;
+}
+
+/*---------- Log In Style -----------*/
+
+.LFWraper {
+	float:left;
+	background: #eee;
+	text-align: center;
+	padding: 35px;
+}
+
+.centerBox {
+	background-color: silver;
+	text-align: center;
+	padding: 20px;
+	width: 250px;
+	height: 100px;
+}
+
+#request_login_wraper {
+	float: right;
+}
+
+#login_form_wraper {
+	float: left;
+}
+
+#login_center {
+	width: 85%;
+	margin: auto;
+}
+
+#login_inst_text {
+	padding: 0 30px 0 30px;
+	float: left;
+	text-align: center;
+}
