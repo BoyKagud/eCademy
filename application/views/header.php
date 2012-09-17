@@ -8,29 +8,7 @@
 <!-- <script type="text/javascript" src="public/js/jquery.js"></script> -->
 <!-- <script type="text/javascript" src="public/js/transit.js"></script> -->
 <!-- <script type="text/javascript" src="public/js/jquery.transit.script.js"></script> -->
-<script>
-function ajax(path)
-{
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	  {// code for IE7+, Firefox, Chrome, Opera, Safari
-	  xmlhttp=new XMLHttpRequest();
-	  }
-	else
-	  {// code for IE6, IE5
-	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	xmlhttp.onreadystatechange=function()
-	  {
-	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    {
-	    document.getElementById("page").innerHTML=xmlhttp.responseText;
-	    }
-	  }
-	xmlhttp.open("GET","/cjccms/?path="+path,true);
-	xmlhttp.send();
-	}
-</script>
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <!-- get Style -->
 <?php
 	$u_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -48,9 +26,7 @@ function ajax(path)
 <?php print_r($this->session->all_userdata());?>
 <div class="navigation">
 <ul>
-	<li><div class="topMenuItem">Home</div></li>
-	<li><div class="topMenuItem">e-Classroom</div></li>
-	<li><div class="topMenuItem">Student Information</div></li>
+	<li><div class="topMenuItem"><a href='/ecademy'>Home</a></div></li>
 	<li><div class="topMenuItem">Help</div></li>
 	<li><div class="topMenuItem"><a href="/ecademy/UserAccounts/logout">Log Out</a></div></li>
 </ul>

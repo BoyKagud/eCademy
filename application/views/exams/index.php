@@ -1,23 +1,10 @@
 <?php 
-
-if ( isset($_POST['step']) ) {
-	$regReq = new Requirements();
-	$regExam = new Exam();
-	$data = $regExam->examInsertToDB($regReq->createReq(2), $_POST['itemCount']);
-	if (!$data) echo 'ERROR'; else echo 'success';
-}
-
-if ( isset($_SESSION['path']) ) {
-	$action = $_SESSION['path'];
-	$this->load->view($action);
-	unset($_SESSION['path']);
-} else {
 	 $this->load->view('sidebarCms');
 ?>
 	<div class="content">
 		<a href="create">CREATE</a>
 	</div>
-<?php }
+<?php
 
 function getItemsForm($items = 5) {		//test num of items
 	$ajaxTotalItems = null;

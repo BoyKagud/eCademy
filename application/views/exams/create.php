@@ -6,7 +6,7 @@ function getCourseName($id) {
 }
 
 function getExamDetailsForm($courses){
-	$form = "<form id='createExamForm' action='/eCademy/index.php/Exams/' method='post'>";
+	$form = "<form id='createExamForm' action='".base_url()."/Exams/create' method='POST'>";
 	$form .= "<input type='text' name='itemCount' placeholder='Enter Number of Items'/><br/>";
 	$form .= "<input type='text' name='reqTitle' placeholder='Enter Title'/><br/>"
 			  ."<input type='text' name='reqDesc' placeholder='Description'/><br/>"
@@ -16,14 +16,31 @@ function getExamDetailsForm($courses){
 		$form .= "<option value='{$row['course_id']}'>".getCourseName($row['course_id'])."</option>";
 	}
 	$form .= "</select>"
-			."<input type='hidden' name='step' value='1'/>"
-			."<input type='submit' value='Create'/></form>";
+			."<input type='hidden' name='step' value='2'/>"
+			."<input type='submit' value='Next'/></form>";
+	echo $form;
+}
+
+function setItems($itemsNum) {
+	$form = null;
 	echo $form;
 }
 
 ?>
-
 <div class="content">
-	<h3>Setup Exam Details</h3>
-	<?php getExamDetailsForm($courses);?>
+
+<?php // switch for create View via $step on template engine 
+
+	if ( !isset ($step) ) {
+		echo "<h1>Set Exam Details</h1>";
+		getExamDetailsForm($courses);
+	} else {
+		switch ($step) {
+			case 2 : echo '<h1>Setup Exam Items</h1>';
+			setItems($itemsNum);
+		}
+	}
+	
+?>
+
 </div>
