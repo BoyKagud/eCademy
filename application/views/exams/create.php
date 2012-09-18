@@ -25,7 +25,7 @@ function setItems($itemsNum) {
 	$form = "<form id='createExamForm' action='".base_url()."/Exams/create' method='POST'>";
 	
 	for ($i=0; $i<$itemsNum; $i++) { //loop each item
-		$form .= "<input type='text' name='itemQ' placeholder='Enter Item Question' />"
+		$form .= "<input class='itemQuestionTB' type='text' name='itemQ' placeholder='Enter Item Question' />"
 				."<select name='itemTotalChoices'>";
 				for ($s=1; $s<=10; $s++) { //loop for item's total number of choices
 					$form .= "<option value='{$s}'>{$s}</option>";
@@ -35,6 +35,10 @@ function setItems($itemsNum) {
 	
 	$form .= "<input type='submit' value='Submit' /></form>";
 	echo $form;
+}
+
+function setItemsChoices() {
+	
 }
 
 ?>
@@ -48,7 +52,11 @@ function setItems($itemsNum) {
 	} else {
 		switch ($step) {
 			case 2 : echo '<h1>Set Exam Items</h1>';
-			setItems($itemsNum);
+					setItems($itemsNum);
+					break;
+			case 3 : echo '<h1>Set Items\' Choices</h1>';
+					setItemsChoices();
+					break;
 		}
 	}
 	
