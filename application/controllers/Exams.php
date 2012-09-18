@@ -35,6 +35,7 @@ require 'UserAccounts.php';
 								$regExam = new Exam();
 								$reqID = $regExam->examInsertToDB($regReq->createReq(2), $_POST['itemCount']);
 								if (!$data) echo 'ERROR'; else echo 'success';
+								
 								$data['itemsNum'] = $_POST['itemCount'];
 								$data['step'] = $_POST['step'];
 								$this->load->view('exams/create', $data);
