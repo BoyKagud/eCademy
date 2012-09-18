@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'cjcUser';
+$db['default']['username'] = 'ecademy';
 $db['default']['password'] = 'admin';
 $db['default']['database'] = 'univCMSdb';
 $db['default']['dbdriver'] = 'mysql';
