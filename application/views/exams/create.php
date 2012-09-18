@@ -41,6 +41,10 @@ function setItemsChoices() {
 	
 }
 
+function setItemsAns() {
+	
+}
+
 ?>
 <div class="content">
 
@@ -56,6 +60,11 @@ function setItemsChoices() {
 					break;
 			case 3 : echo '<h1>Set Items\' Choices</h1>';
 					setItemsChoices();
+					break;
+			case 4 : echo '<h1>Set Items\' Answers</h1>';
+					setItemsAns();
+					break;
+			default : echo 'ERROR 799: a Step error has occured. Report this bug.';
 					break;
 		}
 	}
