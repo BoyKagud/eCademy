@@ -22,18 +22,26 @@ function getExamDetailsForm($courses){
 }
 
 function setItems($itemsNum) {
-	$form = "<form id='createExamForm' action='".base_url()."/Exams/create' method='POST'>";
-	
-	for ($i=0; $i<$itemsNum; $i++) { //loop each item
-		$form .= "<input class='itemQuestionTB' type='text' name='itemQ' placeholder='Enter Item Question' />"
-				."<select name='itemTotalChoices'>";
+	$form = "<form id='createExamForm' action='".base_url()."Exams/create' method='POST'>";
+	$form .= "<table><tbody>"
+			."<tr>"."<th>Item #</th>"
+			."<th>Questions</th>"
+			."<th>Total Options</th>"
+			."<th></th>"."</tr>";
+	for ($i=1; $i<=$itemsNum; $i++) { //loop each item
+		$form .= "<tr>"
+				."<td>{$i}</td>"
+				."<td><input class='itemQuestionTB' type='text' name='itemQ' placeholder='Enter Item Question' /></td>"
+				."<td><select name='itemTotalChoices'>";
+				
 				for ($s=1; $s<=10; $s++) { //loop for item's total number of choices
 					$form .= "<option value='{$s}'>{$s}</option>";
 				}
-				$form .= "</select><br /><br />";
+				
+		$form .= "</select></td></tr>";
 	}
 	
-	$form .= "<input type='submit' value='Submit' /></form>";
+	$form .= "</tbody></table><input type='submit' value='Submit' /></form>";
 	echo $form;
 }
 

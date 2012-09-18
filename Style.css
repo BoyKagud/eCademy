@@ -129,3 +129,9 @@ body ul {
 	float: left;
 	text-align: center;
 }
+
+/*---------- Styles on Exam Create -----------*/
+
+.itemQuestionTB {
+	width: 500px;
+}

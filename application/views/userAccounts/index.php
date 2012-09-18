@@ -1,4 +1,3 @@
-<?php print_r($this->session->all_userdata());?>
 <?php 
 $data = $this->session->userdata('isLoggedIn');
 if (isset($data) && $data == 1) {
