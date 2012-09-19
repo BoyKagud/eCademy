@@ -38,10 +38,13 @@ require 'UserAccounts.php';
 								
 								$data['itemsNum'] = $_POST['itemCount'];
 								$data['step'] = $_POST['step'];
+								$data['exam_id'] = $reqID;
 								$this->load->view('exams/create', $data);
 								break;
 								
-						case 3: $this->load->view('exams/create', $data);
+						case 3: $
+								
+								$this->load->view('exams/create', $data);
 								break;
 						case 4: $this->load->view('exams/create', $data);
 								break;
@@ -55,7 +58,7 @@ require 'UserAccounts.php';
 			}
 		}
 		
-		public function load() {
+		public function load() { // ajax routing
 			$stepView = 'asdfasdfasdf';
 			json_encode($stepView);
 		}

@@ -31,8 +31,8 @@ function setItems($itemsNum) {
 	for ($i=1; $i<=$itemsNum; $i++) { //loop each item
 		$form .= "<tr>"
 				."<td>{$i}</td>"
-				."<td><input class='itemQuestionTB' type='text' name='itemQ' placeholder='Enter Item Question' /></td>"
-				."<td><select name='itemTotalChoices'>";
+				."<td><input class='itemQuestionTB' type='text' name='itemQ{$i}' placeholder='Enter Item Question' /></td>"
+				."<td><select name='item{$i}TotalChoices'>";
 				
 				for ($s=1; $s<=10; $s++) { //loop for item's total number of choices
 					$form .= "<option value='{$s}'>{$s}</option>";
@@ -41,7 +41,9 @@ function setItems($itemsNum) {
 		$form .= "</select></td></tr>";
 	}
 	
-	$form .= "</tbody></table><input type='submit' value='Submit' /></form>";
+	$form .= "</tbody></table>"
+			."<input type='hidden' name='exam_id' value='{$exam_id}' />"
+			."<input type='submit' value='Submit' /></form>";
 	echo $form;
 }
 
@@ -64,7 +66,7 @@ function setItemsAns() {
 	} else {
 		switch ($step) {
 			case 2 : echo '<h1>Set Exam Items</h1>';
-					setItems($itemsNum);
+					setItems($itemsNum, $exam_id);
 					break;
 			case 3 : echo '<h1>Set Items\' Choices</h1>';
 					setItemsChoices();

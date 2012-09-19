@@ -1,6 +1,7 @@
 <?php
 
-	class ExamItems extends Model {
+	class ExamItem extends Model {
+		
 		
 		
 	}

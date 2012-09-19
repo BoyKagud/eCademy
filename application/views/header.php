@@ -23,7 +23,6 @@
 <body>
 <div class="wraper">
 <div class="header">
-<?php print_r($this->session->all_userdata());?>
 <div class="navigation">
 <ul>
 	<li><div class="topMenuItem"><a href='/ecademy'>Home</a></div></li>
