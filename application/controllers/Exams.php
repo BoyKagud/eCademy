@@ -1,6 +1,6 @@
 <?php
-require 'Requirements.php';
-require 'UserAccounts.php';
+require_once 'Requirements.php';
+require_once 'ExamItems.php';
 	class Exams extends Requirements {
 		
 		public function __construct() {
@@ -38,12 +38,26 @@ require 'UserAccounts.php';
 								
 								$data['itemsNum'] = $_POST['itemCount'];
 								$data['step'] = $_POST['step'];
+								$data['itemChoices'] = $_POST['itemChoices'];
 								$data['exam_id'] = $reqID;
 								$this->load->view('exams/create', $data);
 								break;
 								
-						case 3: $
-								
+						case 3: for ($item=1; $item<=$_POST['itemCount']; $item++) {
+									$arr = "itemQ".$item;
+									$QS = $_POST[$arr];
+									$itemQuery = "INSERT INTO exam_items (`question`, `numberOfChoices`, `exam_id`) "
+											."VALUES ('{$QS}', '{$_POST['itemChoices']}', '{$_POST['exam_id']}'); ";
+									$regEI = new ExamItems();
+									$itemID = $regEI->regExamItems($itemQuery, $QS, $_POST['exam_id']); //must return item_id, to be coded
+									$iChoice = 1;
+									do {
+										$choice = "'item{$item}choice{$iChoice}'";
+										$query = "INSERT INTO item_choices (`label`, `item_id`) "
+												."VALUES ({$choice}, {$itemID});";
+										$iChoice++;
+									} while ( isset($_POST[$choice]) ) ;
+								}
 								$this->load->view('exams/create', $data);
 								break;
 						case 4: $this->load->view('exams/create', $data);

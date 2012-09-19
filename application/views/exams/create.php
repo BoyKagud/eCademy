@@ -8,6 +8,11 @@ function getCourseName($id) {
 function getExamDetailsForm($courses){
 	$form = "<form id='createExamForm' action='".base_url()."/Exams/create' method='POST'>";
 	$form .= "<input type='text' name='itemCount' placeholder='Enter Number of Items'/><br/>";
+	$form .= "<select name='itemChoices'>";
+	for ($x=1; $x<=10; $x++) {
+		$form .= "<option value='{$x}'>{$x}</option>";
+	}
+	$form .= "</select>";
 	$form .= "<input type='text' name='reqTitle' placeholder='Enter Title'/><br/>"
 			  ."<input type='text' name='reqDesc' placeholder='Description'/><br/>"
 			  ."<input type='text' name='reqHps' placeholder='Highest Possible Score'/><br/>"
@@ -21,28 +26,30 @@ function getExamDetailsForm($courses){
 	echo $form;
 }
 
-function setItems($itemsNum) {
+function setItems($itemsNum, $exam_id, $itemChoices) {
 	$form = "<form id='createExamForm' action='".base_url()."Exams/create' method='POST'>";
-	$form .= "<table><tbody>"
+	$form .= "<table cellpadding='10px'><tbody>"
 			."<tr>"."<th>Item #</th>"
-			."<th>Questions</th>"
-			."<th>Total Options</th>"
-			."<th></th>"."</tr>";
+			."<th>Questions</th></tr>";
 	for ($i=1; $i<=$itemsNum; $i++) { //loop each item
 		$form .= "<tr>"
 				."<td>{$i}</td>"
-				."<td><input class='itemQuestionTB' type='text' name='itemQ{$i}' placeholder='Enter Item Question' /></td>"
-				."<td><select name='item{$i}TotalChoices'>";
-				
-				for ($s=1; $s<=10; $s++) { //loop for item's total number of choices
-					$form .= "<option value='{$s}'>{$s}</option>";
+				."<td><input class='itemQuestionTB' type='text' name='itemQ{$i}' placeholder='Enter Item Question' />"
+				."<table>";
+				for ($s=1; $s<=$itemChoices; $s++) { //loop for item's total number of choices
+					$form .= "<tr><td><input type='text' name='item{$i}choice{$s}'";
+							if ($s==1) $form .= "placeholder='Enter The Correct Answer'"; else $form .= "placeholder='Choice{$s}'";
+					$form .=" style='margin-left: 20px; width:300px;'/></td></tr>";
 				}
-				
-		$form .= "</select></td></tr>";
+
+		$form .= "</table></td></tr>";
 	}
 	
 	$form .= "</tbody></table>"
+			."<input type='hidden' name='itemChoices' value='{$itemChoices}' />"
+			."<input type='hidden' name='itemCount' value='{$itemsNum}' />"
 			."<input type='hidden' name='exam_id' value='{$exam_id}' />"
+			."<input type='hidden' name='step' value='3'/>"
 			."<input type='submit' value='Submit' /></form>";
 	echo $form;
 }
@@ -66,10 +73,10 @@ function setItemsAns() {
 	} else {
 		switch ($step) {
 			case 2 : echo '<h1>Set Exam Items</h1>';
-					setItems($itemsNum, $exam_id);
+					setItems($itemsNum, $exam_id, $itemChoices);
 					break;
 			case 3 : echo '<h1>Set Items\' Choices</h1>';
-					setItemsChoices();
+					setItemsChoices($itemsNum, $itemChoices);
 					break;
 			case 4 : echo '<h1>Set Items\' Answers</h1>';
 					setItemsAns();
