@@ -48,15 +48,27 @@ require_once 'ExamItems.php';
 									$QS = $_POST[$arr];
 									$itemQuery = "INSERT INTO exam_items (`question`, `numberOfChoices`, `exam_id`) "
 											."VALUES ('{$QS}', '{$_POST['itemChoices']}', '{$_POST['exam_id']}'); ";
-									$regEI = new ExamItems();
-									$itemID = $regEI->regExamItems($itemQuery, $QS, $_POST['exam_id']); //must return item_id, to be coded
-									$iChoice = 1;
+									$reg = new ExamItems();
+									
+									// register Exam Items
+									$itemID = $reg->regExamItems($itemQuery, $QS, $_POST['exam_id']);
+									
+									//register Item Answer Key
+									$unit = "item{$item}choice1";
+									$key = $_POST[$unit];
+									$itemKeyID = $reg->regItemChoices($key, $itemID, null);
+									$reg->regItemKey($itemKeyID, $itemID);
+									
+									//register other Item Choices
+									$iChoice = 2;
+									$query = null;
 									do {
 										$choice = "'item{$item}choice{$iChoice}'";
-										$query = "INSERT INTO item_choices (`label`, `item_id`) "
+										$query .= "INSERT INTO item_choices (`label`, `item_id`) "
 												."VALUES ({$choice}, {$itemID});";
 										$iChoice++;
 									} while ( isset($_POST[$choice]) ) ;
+									$reg->regItemChoices(null, null, $query);
 								}
 								$this->load->view('exams/create', $data);
 								break;

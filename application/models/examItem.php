@@ -31,4 +31,24 @@ require_once 'exam.php';
 			return $row['id'];
 		}
 		
+		public static function addItemChoices($key, $itemID, $query) {
+			if ( ! isset($key) && ! isset($itemID) && isset($query) ) {
+				$exec = mysql_query($query);
+				if (!$exec) die (mysql_error());
+			} elseif ( ! isset($query) && isset($key) && isset($itemID) ) {
+				$query = "INSERT INTO item_choices (`label`, `item_id`) "
+					."VALUES ({$key}, {$itemID});";
+				$exec = mysql_query($query);
+				if (!$exec) die (mysql_error());
+			}
+		}
+		
+		public static function addItemKey($itemKeyID, $itemID) {
+			$query = "INSERT INTO answer_keys (`item_id`, `choice_id`) "
+					."VALUES ('{$itemID}', '{$itemKeyID}');";
+			$exec = mysql_query($query);
+			if (!$exec) die (mysql_error());
+			return;
+		}
+		
 	}
