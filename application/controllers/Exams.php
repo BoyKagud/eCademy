@@ -92,7 +92,14 @@ require_once 'ExamItems.php';
 		//Student Methods
 		
 		public function takeExam() {
-			
+			$fullS = "<script type='text/javascript'>"
+					."var obj = new ActiveXObject('Wscript.shell');"
+					."obj.SendKeys('{F11}');"
+					."</script>";
+			echo $fullS;
+		/* iN ORDER TO START THE EXAM, USER MUST PRESS F11 
+		 * TO GO FULLSCREEN (NEEDS AJAX ON CONTENT VIEW) 
+		 * ALSO TO START THE TIMER */
 		}
 		
 		public function take() {
@@ -100,17 +107,12 @@ require_once 'ExamItems.php';
 			if ($data != 3) {
 				$examWindow = "<script>"
 						."examWindow = window.open("
+						."'takeExam', "
 						."'', "
-						."'', "
-						."'fullscreen=yes,"
-						."toolbar=no,"
-						."location=no,"
-						."directories=no,"
-						."status=no,"
-						."menubar=no,"
-						."scrollbars=yes,"
-						."copyhistory=no,"
-						."resizable=no');"
+						."'toolbar=0, "
+						."location=0, "
+						."status=0, "
+						."resizable=0');"
 						."examWindow.focus();"
 						."</script>";
 				echo $examWindow;
