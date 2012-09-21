@@ -49,17 +49,8 @@ function setItems($itemsNum, $exam_id, $itemChoices) {
 			."<input type='hidden' name='itemChoices' value='{$itemChoices}' />"
 			."<input type='hidden' name='itemCount' value='{$itemsNum}' />"
 			."<input type='hidden' name='exam_id' value='{$exam_id}' />"
-			."<input type='hidden' name='step' value='3'/>"
 			."<input type='submit' value='Submit' /></form>";
 	echo $form;
-}
-
-function setItemsChoices() {
-	
-}
-
-function setItemsAns() {
-	
 }
 
 ?>
@@ -75,13 +66,7 @@ function setItemsAns() {
 			case 2 : echo '<h1>Set Exam Items</h1>';
 					setItems($itemsNum, $exam_id, $itemChoices);
 					break;
-			case 3 : echo '<h1>Set Items\' Choices</h1>';
-					setItemsChoices($itemsNum, $itemChoices);
-					break;
-			case 4 : echo '<h1>Set Items\' Answers</h1>';
-					setItemsAns();
-					break;
-			default : echo 'ERROR 799: a Step error has occured. Report this bug.';
+			default : echo 'ERROR 799: a \'Step error\' has occured. Report this bug.';
 					break;
 		}
 	}

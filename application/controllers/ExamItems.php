@@ -9,21 +9,24 @@ require_once 'Exams.php';
 		
 		public static function regExamItems($query, $QS, $exam_id) {
 			$reg = new ExamItem();
-			return $reg->addExamItem($query, $QS, $exam_id);
+			$itemID = $reg->addExamItem($query, $QS, $exam_id);
+			return $itemID;
 		}
 		
 		public static function regItemChoices($key, $itemID, $query) {
 			$reg = new ExamItem();
-			if ( ! isset($key) && ! isset($itemID) && isset($query) ) {
+			if ( isset($query) ) {
 				$reg->addItemChoices($key, $itemID);
-			} elseif ( ! isset($query) && isset($key) && isset($itemID) ) {
-				return $reg->addItemChoices($key, $itemID);
+			} else {
+				$id = $reg->addItemChoices($key, $itemID, null);
+				return $id;
 			}
 		}
 		
 		public static function regItemKey($itemKeyID, $itemID) {
 			$reg = new ExamItem();
-			return $reg->addItemKey($itemKeyID, $itemID);
+			$id = $reg->addItemKey($itemKeyID, $itemID);
+			return $id;
 		}
 		
 	}

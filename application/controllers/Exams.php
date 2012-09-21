@@ -70,10 +70,9 @@ require_once 'ExamItems.php';
 									} while ( isset($_POST[$choice]) ) ;
 									$reg->regItemChoices(null, null, $query);
 								}
-								$this->load->view('exams/create', $data);
+								// Redirection code
 								break;
-						case 4: $this->load->view('exams/create', $data);
-								break;
+						default: echo "an Error has occured";
 					}
 				} else {
 					$this->load->view('exams/create', $data);
@@ -83,36 +82,7 @@ require_once 'ExamItems.php';
 				$this->load->view('index');
 			}
 		}
-		
-		public function load() { // ajax routing
-			$stepView = 'asdfasdfasdf';
-			json_encode($stepView);
-		}
-		
-		public function takeWindow() {
-			$data = $this->session->userdata('uType');
-			if ($data == 3) {
-				$examWindow = "<script>"
-							."examWindow = window.open("
-							."'', "
-							."'', "
-							."'fullscreen=yes,"
-							."toolbar=no,"
-							."location=no,"
-							."directories=no,"
-							."status=no,"
-							."menubar=no,"
-							."scrollbars=yes,"
-							."copyhistory=no,"
-							."resizable=no');"
-							."examWindow.focus();"
-							."</script>";
-				echo $examWindow;
-			} else {
-				$this->load->view('index');
-			}
-		}
-		
+				
 		// Instructor Methods
 		
 		public function setExamItems() {
@@ -124,6 +94,31 @@ require_once 'ExamItems.php';
 		public function takeExam() {
 			
 		}
+		
+		public function take() {
+			$data = $this->session->userdata('uType');
+			if ($data != 3) {
+				$examWindow = "<script>"
+						."examWindow = window.open("
+						."'', "
+						."'', "
+						."'fullscreen=yes,"
+						."toolbar=no,"
+						."location=no,"
+						."directories=no,"
+						."status=no,"
+						."menubar=no,"
+						."scrollbars=yes,"
+						."copyhistory=no,"
+						."resizable=no');"
+						."examWindow.focus();"
+						."</script>";
+				echo $examWindow;
+			} else {
+				$this->load->view('index');
+			}
+		}
+		
 		
 	}
 
