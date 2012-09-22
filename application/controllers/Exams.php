@@ -116,6 +116,8 @@ require_once 'ExamItems.php';
 						."examWindow.focus();"
 						."</script>";
 				echo $examWindow;
+				
+				
 			} else {
 				$this->load->view('index');
 			}
