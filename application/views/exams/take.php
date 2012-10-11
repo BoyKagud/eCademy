@@ -8,9 +8,6 @@
 	</div>
 	
 	<div id='examForm'>
-		<?php // to call exam function ?>
-		<applet codebase="" code="Exam.class" width=400 height=75>
-		</applet>
-	</div>
+   	</div>
 	
 </html>
