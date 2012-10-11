@@ -92,11 +92,7 @@ require_once 'ExamItems.php';
 		//Student Methods
 		
 		public function takeExam() {
-			$fullS = "<script type='text/javascript'>"
-					."var obj = new ActiveXObject('Wscript.shell');"
-					."obj.SendKeys('{F11}');"
-					."</script>";
-			echo $fullS;
+			$this->load->view('/exams/take');
 		/* iN ORDER TO START THE EXAM, USER MUST PRESS F11 
 		 * TO GO FULLSCREEN (NEEDS AJAX ON CONTENT VIEW) 
 		 * ALSO TO START THE TIMER */

@@ -2,7 +2,8 @@
 	 $this->load->view('sidebarCms');
 ?>
 	<div class="content">
-		<a href="create">CREATE</a>
+		<a href="create">CREATE</a><br />
+		<a href="take">TAKE</a>
 	</div>
 <?php
 
