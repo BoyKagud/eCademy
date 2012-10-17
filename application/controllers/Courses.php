@@ -11,12 +11,8 @@
 		
 		public function view() {
 			$this->load->view('header');
-			if (isset( $_GET['CourseID'] ) ) {
-				$this->load->view('/courses/index');
-			} else {
-				$data['uCourses'] = Course::fetchUserCourses($this->session->userdata('uID'));
-				$this->load->view('/courses/index', $data);
-			}
+			$data['uCourses'] = Course::fetchUserCourses($this->session->userdata('uID'));
+			$this->load->view('/courses/index', $data);
 			$this->load->view('footer');
 		}
 		

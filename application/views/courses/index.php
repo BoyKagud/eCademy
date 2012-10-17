@@ -1,16 +1,32 @@
 <?php
 $this->load->view('sidebarCms');
 ?>
-<?php
+<script>
+function slideDetails(id) {
+	if ($(id).is(":hidden")) {
+		$(id).slideDown("slow");
+	} else {
+		$(id).slideUp("slow");
+	}
+};
+</script>
+
+<div class='content'>
+<?php 
 if (isset ($uCourses) ) {
-	?>
-    <table cellpadding="10px" border="0">
-        <?php
-        while ($row = mysql_fetch_assoc($uCourses)) {
-            $execDet = fetchCourseDetails($row['id']);
-            $cDet = mysql_fetch_array($execDet);
-            echo "<tr><td><a href='view?CourseID={$cDet['id']}'>".$cDet['name']." - ".$cDet['section']."</a><td><tr>";
-        }
-        ?>
-    </table>
-<?php } ?>
+	$divItr = 1;
+	while ($row = mysql_fetch_assoc($uCourses)) {
+    	$execDet = fetchCourseDetails($row['id']);
+    	$cDet = mysql_fetch_array($execDet);
+    	echo "<a href='#' onclick='slideDetails(cItemDetDiv{$divItr})'><div class='courseItemViewDiv'>".$cDet['name']." - ".$cDet['section']."</div></a>";
+    	echo "<div id='cItemDetDiv{$divItr}' style='display:none; padding:15px; margin-left:30px; margin-top:5px; background:#fff;'>"
+    			."Description and Course Statistics Summary goes Here........<br />"
+    			."Description and Course Statistics Summary goes Here........<br />"
+    			."Description and Course Statistics Summary goes Here........<br />"
+    			."Description and Course Statistics Summary goes Here........<br />"
+    			."</div>";
+		$divItr++;
+    }
+} 
+?>
+</div>
