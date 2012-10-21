@@ -16,8 +16,7 @@ function slideDetails(id) {
 if (isset ($uCourses) ) {
 	$divItr = 1;
 	while ($row = mysql_fetch_assoc($uCourses)) {
-    	$execDet = fetchCourseDetails($row['id']);
-    	$cDet = mysql_fetch_array($execDet);
+    	$cDet = fetchCourseDetails($row['course_id']);
     	echo "<a href='#' onclick='slideDetails(cItemDetDiv{$divItr})'><div class='courseItemViewDiv'>".$cDet['name']." - ".$cDet['section']."</div></a>";
     	echo "<div id='cItemDetDiv{$divItr}' style='display:none; padding:15px; margin-left:30px; margin-top:5px; background:#fff;'>"
     			."Description and Course Statistics Summary goes Here........<br />"

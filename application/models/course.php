@@ -9,7 +9,7 @@
 		}
 		
 		function fetchUserCourses($id) {
-			$sql = "SELECT * FROM users_courses WHERE user_id='{$id}'";
+			echo $sql = "SELECT * FROM users_courses WHERE user_id='{$id}'";
 			$result = mysql_query($sql);
 			if (!$result) die(mysql_error());
 			return $result;

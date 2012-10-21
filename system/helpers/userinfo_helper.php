@@ -8,10 +8,11 @@ if ( ! function_exists('getCourseDetails')) {
 
 if ( ! function_exists('fetchCourseDetails')) {
 	function fetchCourseDetails($id) {
-		$sql = "SELECT * FROM courses WHERE id='{$id}'";
+		$sql = "SELECT * FROM courses WHERE id={$id}";
 		$result = mysql_query($sql);
 		if (!$result) die (mysql_error());
-		return $result;
+		$det = mysql_fetch_array($result);
+		return $det;
 	}
 }
 
