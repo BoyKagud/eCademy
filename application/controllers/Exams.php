@@ -8,6 +8,7 @@ require_once 'ExamItems.php';
 			$this->load->database();
 			$this->load->helper('userinfo_helper');
 			$this->load->helper('exam_helper');
+			$this->load->model('exam');
 		}
 		
 		//Routing Methods
@@ -19,13 +20,14 @@ require_once 'ExamItems.php';
 			$this->load->view('footer');
 		}
 		
+		// Instructor Methods
+		
 		public function create() {
 			$coursesResult = getUserCourses($this->session->userdata('uID'));	
 			$data['courses'] = $coursesResult;
 			$uType = $this->session->userdata('uType');
 			$this->load->helper('url_helper');
 			if ($uType == 2) {
-				$this->load->model('exam');
 				$this->load->view('header');
 				// isolate views according to request
 				if (isset ($_POST['step']) ) {
@@ -81,39 +83,16 @@ require_once 'ExamItems.php';
 			} else {
 				$this->load->view('index');
 			}
-		}
-				
-		// Instructor Methods
-		
-		public function setExamItems() {
-			//to communicate with jquery and ajax
-		}		
-		
+		}				
 		//Student Methods
-		
-		public function takeExam() {
-			$this->load->view('/exams/take');
-		/* iN ORDER TO START THE EXAM, USER MUST PRESS F11 
-		 * TO GO FULLSCREEN (NEEDS AJAX ON CONTENT VIEW) 
-		 * ALSO TO START THE TIMER */
-		}
 		
 		public function take() {
 			$data = $this->session->userdata('uType');
-			if ($data != 3) {
-				$examWindow = "<script>"
-						."examWindow = window.open("
-						."'takeExam', "
-						."'', "
-						."'toolbar=0, "
-						."location=0, "
-						."status=0, "
-						."resizable=0');"
-						."examWindow.focus();"
-						."</script>";
-				echo $examWindow;
-				
-				
+			if ($data == 3 && !isset($_GET['examID']) ) {
+				$this->load->model('exam');
+				$this->load->view('header');
+				$this->load->view('exams/take', $data);
+				$this->load->view('footer');
 			} else {
 				$this->load->view('index');
 			}
