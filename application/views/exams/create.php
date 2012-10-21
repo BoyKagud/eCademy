@@ -1,8 +1,7 @@
 <?php 
 function getCourseName($id) {
 	$result = getCourseDetails($id);
-	$row = mysql_fetch_array($result);
-	return $row['name'].$row['section'];
+	return $result['name'].$result['section'];
 }
 
 function getExamDetailsForm($courses){

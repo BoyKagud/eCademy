@@ -14,4 +14,19 @@
 			if (!$result) die(mysql_error());
 			return $result;
 		}
+		
+		function getCourseReqs($type, $course_id) {
+			if ( isset ($type) ) {
+				$sql = "SELECT * FROM requirements WHERE course_id='{$course_id}' AND reqtype='{$type}'";
+			} else {
+				$sql = "SELECT * FROM requirements WHERE course_id='{$course_id}'";
+			}
+			$result = mysql_query($sql);
+			if (!$result) die(mysql_error());
+			return $result;
+		}
+		
+		function getCourseExams($course_id) {
+			return Course::getCourseReqs(2, $course_id);
+		}
 	}

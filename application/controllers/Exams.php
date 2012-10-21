@@ -87,11 +87,11 @@ require_once 'ExamItems.php';
 		//Student Methods
 		
 		public function take() {
-			$data = $this->session->userdata('uType');
-			if ($data == 3 && !isset($_GET['examID']) ) {
+			$userType = $this->session->userdata('uType');
+			if ($userType == 3 && isset($_GET['eID']) ) {
 				$this->load->model('exam');
 				$this->load->view('header');
-				$this->load->view('exams/take', $data);
+				$this->load->view('exams/take');
 				$this->load->view('footer');
 			} else {
 				$this->load->view('index');
