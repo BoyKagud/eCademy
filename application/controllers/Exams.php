@@ -58,7 +58,7 @@ require_once 'ExamItems.php';
 									//register Item Answer Key
 									$unit = "item{$item}choice1";
 									$key = $_POST[$unit];
-									$itemKeyID = $reg->regItemChoices($key, $itemID, null);
+									$itemKeyID = ExamItems::regItemChoices($key, $itemID, null);
 									$reg->regItemKey($itemKeyID, $itemID);
 									
 									//register other Item Choices

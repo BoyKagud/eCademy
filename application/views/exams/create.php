@@ -48,6 +48,7 @@ function setItems($itemsNum, $exam_id, $itemChoices) {
 			."<input type='hidden' name='itemChoices' value='{$itemChoices}' />"
 			."<input type='hidden' name='itemCount' value='{$itemsNum}' />"
 			."<input type='hidden' name='exam_id' value='{$exam_id}' />"
+			."<input type='hidden' name='step' value='3' />"
 			."<input type='submit' value='Submit' /></form>";
 	echo $form;
 }

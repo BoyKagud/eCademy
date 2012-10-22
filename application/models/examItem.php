@@ -4,6 +4,7 @@
 		
 		public function __construct(){
 			parent::__construct();
+			$this->load->database();
 			$sql = "CREATE TABLE IF NOT EXISTS exam_items("
 					."`id` INT NOT NULL AUTO_INCREMENT, "
 					."`question` TEXT NOT NULL, "
